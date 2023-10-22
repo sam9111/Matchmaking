@@ -55,7 +55,10 @@ def create_vector(sample):
 
 
 @app.post("/matches")
-def generate_matches(mentee: Annotated[list, Body(..., embed=True)]):
+def generate_matches(mentee: list = Body(...)):
+
+    if len(mentee) == 0:
+        return {"matches": []}
 
     with open('random_mentors.json') as json_file:
 
