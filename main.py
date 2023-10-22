@@ -4,8 +4,21 @@ import uvicorn
 from fastapi import Body, FastAPI
 import json
 from sklearn.metrics.pairwise import cosine_similarity
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
