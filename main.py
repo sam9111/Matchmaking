@@ -1,4 +1,4 @@
-from typing import Annotated
+
 import uvicorn
 
 from fastapi import Body, FastAPI
@@ -18,6 +18,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    access_control_allow_origin=["*"]
 )
 
 
